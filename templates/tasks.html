@@ -1,0 +1,24 @@
+{% extends 'home.html'%}
+
+{%block content%}
+<h1>Tasks</h1>
+{%if user.is_authenticated%}
+<form method="POST" action="">
+{% csrf_token%}
+{{form.as_p}}
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{%if tasks%}
+{%for task in tasks reversed%}
+<h3>{{task }}</h3><a href="{% url 'update' task.id%}"><button type="submit" class="btn btn-primary">update</button></a>
+<a href="{% url 'delete' task.id%}"><button type="submit" class="btn btn-primary">delete</button></a>
+{% endfor %}
+{%else%}
+<h4>You dont have any task...</h4>
+
+{%endif%}
+{%else%}
+<h5>Create an account to be able to save your list</h5>
+<a href="{% url 'signup' %}"><button type="submit" class="btn btn-primary">signUp</button></a>
+{%endif%}
+{% endblock%}

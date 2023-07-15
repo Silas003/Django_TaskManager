@@ -1,0 +1,13 @@
+{% extends 'home.html'%}
+{%block content%}
+<h1>Task</h1>
+<form method="POST" action="{% url 'home'%}">
+{% csrf_token%}
+<h2>Username</h2>
+<input type="text" name="Username">
+<h2>password</h2>
+<input type="password" name="password">
+<input type="submit" name="login User">
+</form>
+
+{% endblock%}

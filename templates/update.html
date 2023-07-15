@@ -1,0 +1,12 @@
+{% extends 'home.html'%}
+
+{%block content%}
+<h1>Task</h1>
+<form method="POST" action="{% url 'tasks'%}">
+{% csrf_token%}
+{{form.as_p}}
+<input type="submit" name="Create Task">
+</form>
+
+
+{% endblock%}
